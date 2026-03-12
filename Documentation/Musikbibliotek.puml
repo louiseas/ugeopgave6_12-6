@@ -1,0 +1,63 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/sequence-diagram
+
+Class Audiobook{
+- String author
++ Audiobook (String title, String author,
+int durationSeconds)
++ void play()
+}
+
+
+Class MediaItem{
+- String title
+- int durationSeconds
++ MediaItem(String title, int durationSeconds)
++ String getTitle ()
++ int getDurationSeconds()
++ String toString()
+}
+
+Class Mediaplayer{
+- Arraylist<Playable>playlist
++ void add(Playable item)
++ void playAll()
++ int getTotalDuration()
++ void printTotalDuration()
++ void printPlaylist()
+}
+
+interface Playable{
++ void play()
++ String getTitle()
++ int getDurationSeconds()
+}
+
+Class Podcast{
+- String host
++ Podcast(String title, String host,
+int durationSeconds)
++ void play()
+}
+
+Class Song{
+- String artist
++ Song(String title, String artist,
+int durationSeconds)
++ void play()
+}
+
+Playable <|.. Podcast : implements
+Playable <|.. Song : implements
+Playable <|.. Audiobook : implements
+
+MediaItem <|-- Podcast : is a
+MediaItem <|-- Song : is a
+MediaItem <|-- Audiobook : is a
+
+Mediaplayer --> Playable
+Mediaplayer <-- MediaItem
+
+
+@enduml

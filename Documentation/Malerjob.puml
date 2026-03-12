@@ -1,0 +1,48 @@
+@startuml
+!pragma layout smetana
+
+Class Circle{
+- double radius
++ Circle (double radius)
+
+
+}
+Class Rectangle{
+- double width
+- double height
++ Rectangle (double width, double height)
+
+}
+Class Triangle{
+- double a
+- double b
+- double c
++ Triangle (double a, double b, double c)
+}
+
+Class PaintJob{
+- String name;
+- Arraylist<Shape>surfaces;
+- Arraylist<Shape>deduction;
++ Paintjob (String name)
++ void addSurface (Shape s)
++ void addDeduction (Shape s))
++ double getTotalSurface()
++ double getTotalDeductions()
++ double getPaintableArea()
++ void printSummary()
+}
+
+Interface Shape{
++ double getArea()
++ double getPerimeter()
+
+}
+
+PaintJob *--  Shape : has a
+Shape <.. Circle : implements
+Shape <.. Rectangle : implements
+Shape <.. Triangle : implements
+
+
+@enduml
